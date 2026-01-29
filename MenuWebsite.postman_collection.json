@@ -1,0 +1,214 @@
+{
+    "info": {
+        "_postman_id": "liquor-menu-collection",
+        "name": "Liquor Menu API",
+        "description": "Postman collection for the Liquor Menu Listing Application API.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "User Login (Mobile Entry)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"mobileNumber\": \"9876543210\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/auth/login",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "auth",
+                                "login"
+                            ]
+                        },
+                        "description": "Enter mobile number to login/track user."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Liquors",
+            "item": [
+                {
+                    "name": "Get All Liquors",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/liquors?category=Whisky&minPrice=1000&maxPrice=5000",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "liquors"
+                            ],
+                            "query": [
+                                {
+                                    "key": "category",
+                                    "value": "Whisky",
+                                    "description": "Filter by category",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "search",
+                                    "value": "Label",
+                                    "description": "Search by name",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "minPrice",
+                                    "value": "1000",
+                                    "description": "Minimum price filter",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "maxPrice",
+                                    "value": "5000",
+                                    "description": "Maximum price filter",
+                                    "disabled": true
+                                }
+                            ]
+                        },
+                        "description": "Fetch all liquors with optional filters."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Liquor By ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/liquors/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "liquors",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "replace_with_valid_id",
+                                    "description": "The ID of the liquor to fetch"
+                                }
+                            ]
+                        },
+                        "description": "Get details of a single liquor item."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Liquor (Dev Only)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"New Whisky Brand\",\n    \"brand\": \"BrandName\",\n    \"category\": \"Whisky\",\n    \"alcoholPercentage\": 40,\n    \"price\": 5000,\n    \"imageUrl\": \"https://example.com/image.jpg\",\n    \"isAvailable\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/liquors",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "liquors"
+                            ]
+                        },
+                        "description": "Add a new liquor item (Developer use)."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Liquor (Dev Only)",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"price\": 5500,\n    \"isAvailable\": false\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/liquors/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "liquors",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "replace_with_valid_id"
+                                }
+                            ]
+                        },
+                        "description": "Update an existing liquor item."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Liquor (Dev Only)",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/liquors/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "liquors",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "replace_with_valid_id"
+                                }
+                            ]
+                        },
+                        "description": "Delete a liquor item."
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:5000/api",
+            "type": "string"
+        }
+    ]
+}
