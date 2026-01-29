@@ -1,4 +1,4 @@
-# Liquor Menu Listing Web App
+# Menu Listing Web App
 
 A premium-look web application for browsing liquor menus, built with the MERN stack (MongoDB, Express, React, Node.js).
 
