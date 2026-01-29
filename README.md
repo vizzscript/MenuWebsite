@@ -38,12 +38,6 @@ PORT=5000
 MONGO_URI=mongodb://localhost:27017/liquor-app
 ```
 
-Seed Database (Optional):
-Populate the database with sample liquor data:
-```bash
-node seeder.js
-```
-
 Start the Server:
 ```bash
 npm run dev
